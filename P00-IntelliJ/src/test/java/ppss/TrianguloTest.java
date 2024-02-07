@@ -67,4 +67,30 @@ public class TrianguloTest {
         assertEquals(resultadoEsperado, resultadoReal);
     }
 
+    @Test
+    public void C5_tipo_triangulo_should_be_Escaleno_when_each_side_is_diferent() {
+        //Preparamos los datos (Arrange)
+        int a = 8;
+        int b = 9;
+        int c = 10;
+        String resultadoEsperado = "Escaleno";
+        //Ejecutamos (Act)
+        String resultadoReal = tri.tipo_triangulo(a, b, c);
+        //Verificamos el resultado (Assert)
+        assertEquals(resultadoEsperado, resultadoReal);
+    }
+
+    @Test
+    public void C6_tipo_triangulo_should_be_Isosceles_when_first_two_sides_are_equals() {
+        //Preparamos los datos (Arrange)
+        int a = 9;
+        int b = 9;
+        int c = 5;
+        String resultadoEsperado = "Isosceles";
+        //Ejecutamos (Act)
+        String resultadoReal = tri.tipo_triangulo(a, b, c);
+        //Verificamos el resultado (Assert)
+        assertEquals(resultadoEsperado, resultadoReal);
+    }
+
 }
