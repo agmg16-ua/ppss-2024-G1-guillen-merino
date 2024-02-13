@@ -1,0 +1,20 @@
+RUN CONFIGURATIONS:
+
+
+- Run CineTest: 
+	(pon aquí el comando)
+
+- Run FicheroTextoTest sin excluidos: 
+	(pon aquí el comando)
+
+- Run DataArrayTest: 
+	(pon aquí el comando)
+
+- Run Parametrizados con excepciones: 
+	(pon aquí el comando)
+
+- Run Parametrizados: 
+	(pon aquí el comando)
+
+- Run todos: 
+	(pon aquí el comando)

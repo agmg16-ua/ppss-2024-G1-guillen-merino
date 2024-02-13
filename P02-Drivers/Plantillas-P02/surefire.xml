@@ -1,0 +1,45 @@
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.3</version>
+                <!-- dependencia para ver los resultados desde maven en forma de árbol
+                     https://github.com/fabriciorby/maven-surefire-junit5-tree-reporter -->
+                <dependencies>
+                    <dependency>
+                        <groupId>me.fabriciorby</groupId>
+                        <artifactId>maven-surefire-junit5-tree-reporter</artifactId>
+                        <version>1.2.1</version>
+                    </dependency>
+                </dependencies>
+				
+                <!-- configuración del plugin -->
+                <configuration>
+                    <reportFormat>plain</reportFormat>
+                    <!-- si ponemos disable=true entonces no vemos el informe de la consola
+                         por lo que si hay algún error no veremos la traza de excepciones
+                    -->
+                    <consoleOutputReporter>
+                        <disable>true</disable>
+                    </consoleOutputReporter>
+                    <statelessTestsetInfoReporter
+                            implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporter">
+                        <!--por defecto el tema es ASCII
+                        <theme>UNICODE</theme>-->
+                        <!-- al deshabilitar la ConsoleOutputReporter no se muestra el informe de la consola
+                              por lo que si hay algún error no veremos la traza de excepciones
+                              Para verlos habilitamos lo siguiente:
+                        -->
+                        <printStacktraceOnError>true</printStacktraceOnError>
+                        <printStacktraceOnFailure>true</printStacktraceOnFailure>
+                        <printStdoutOnError>true</printStdoutOnError>
+                        <printStdoutOnFailure>true</printStdoutOnFailure>
+                        <printStdoutOnSuccess>false</printStdoutOnSuccess>
+                        <printStderrOnError>true</printStderrOnError>
+                        <printStderrOnFailure>true</printStderrOnFailure>
+                        <printStderrOnSuccess>false</printStderrOnSuccess>
+                    </statelessTestsetInfoReporter>
+                    
+                </configuration>
+            </plugin>
+
