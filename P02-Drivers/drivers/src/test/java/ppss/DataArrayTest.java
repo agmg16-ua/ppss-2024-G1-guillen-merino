@@ -107,7 +107,7 @@ class DataArrayTest {
 
         DataException exception = assertThrows(DataException.class, () -> dataArray.delete(eliminar));
 
-        assertEquals("No hay elementos en la coleccion", exception.getMessage());
+        assertEquals("No hay elementos en la colección", exception.getMessage());
     }
 
     @Test
@@ -134,5 +134,18 @@ class DataArrayTest {
         DataException exception = assertThrows(DataException.class, () -> dataArray.delete(eliminar));
 
         assertEquals("Colección vacía. Y el valor a borrar debe ser > 0", exception.getMessage());
+    }
+
+    @Test
+    void C7_delete_should_return_Exception_when_delete_value_is_not_in_coleccion() {
+        int[] coleccionInicio = {1,3,5,7};
+
+        DataArray dataArray = new DataArray(coleccionInicio);
+
+        int eliminar = 8;
+
+        DataException exception = assertThrows(DataException.class, () -> dataArray.delete(eliminar));
+
+        assertEquals("Elemento no encontrado", exception.getMessage());
     }
 }
