@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import ppss.Exceptions.FicheroException;
+
 public class FicheroTexto {
 
     public int contarCaracteres(String nombreFichero) throws FicheroException {
@@ -21,6 +23,7 @@ public class FicheroTexto {
         } catch (IOException e2) {
             throw new FicheroException(nombreFichero + " (Error al leer el archivo)");
         }
+
         if (fichero != null) {
             try {
                 fichero.close();
