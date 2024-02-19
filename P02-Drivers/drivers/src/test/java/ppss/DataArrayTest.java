@@ -8,7 +8,7 @@ import ppss.Exceptions.DataException;
 class DataArrayTest {
 
     @Test
-    void C1_delete_should_return_1_3_7_when_coleccion_is_1_3_5_7_and_delete_5() {
+    public void C1_delete_should_return_1_3_7_when_coleccion_is_1_3_5_7_and_delete_5() {
         int[] coleccionInicio = new int[4];
         coleccionInicio[0] = 1;
         coleccionInicio[1] = 3;
@@ -40,7 +40,7 @@ class DataArrayTest {
     }
 
     @Test
-    void C2_delete_should_return_1_3_5_7_when_coleccion_is_1_3_3_5_7_and_delete_5() {
+    public void C2_delete_should_return_1_3_5_7_when_coleccion_is_1_3_3_5_7_and_delete_5() {
         int[] coleccionInicio = new int[5];
         coleccionInicio[0] = 1;
         coleccionInicio[1] = 3;
@@ -73,7 +73,7 @@ class DataArrayTest {
     }
 
     @Test
-    void C3_delete_should_return_1_2_3_5_6_7_8_9_10_when_coleccion_is_1_2_3_4_5_6_7_8_9_10_and_delete_4() {
+    public void C3_delete_should_return_1_2_3_5_6_7_8_9_10_when_coleccion_is_1_2_3_4_5_6_7_8_9_10_and_delete_4() {
         int[] coleccionInicio = {1,2,3,4,5,6,7,8,9,10};
 
         DataArray dataArray = new DataArray(coleccionInicio);
@@ -98,7 +98,7 @@ class DataArrayTest {
     }
 
     @Test
-    void C4_delete_should_return_Exception_when_coleccion_is_empty() {
+    public void C4_delete_should_return_Exception_when_coleccion_is_empty() {
         int[] coleccionInicio = {};
 
         DataArray dataArray = new DataArray(coleccionInicio);
@@ -111,7 +111,7 @@ class DataArrayTest {
     }
 
     @Test
-    void C5_delete_should_return_Exception_when_delete_value_is_less_or_equal_than_0() {
+    public void C5_delete_should_return_Exception_when_delete_value_is_less_or_equal_than_0() {
         int[] coleccionInicio = {1,3,5,7};
 
         DataArray dataArray = new DataArray(coleccionInicio);
@@ -124,7 +124,7 @@ class DataArrayTest {
     }
 
     @Test
-    void C6_delete_should_return_Exception_when_coleccion_is_empty_and_delete_value_is_0() {
+    public void C6_delete_should_return_Exception_when_coleccion_is_empty_and_delete_value_is_0() {
         int[] coleccionInicio = {};
 
         DataArray dataArray = new DataArray(coleccionInicio);
@@ -137,7 +137,7 @@ class DataArrayTest {
     }
 
     @Test
-    void C7_delete_should_return_Exception_when_delete_value_is_not_in_coleccion() {
+    public void C7_delete_should_return_Exception_when_delete_value_is_not_in_coleccion() {
         int[] coleccionInicio = {1,3,5,7};
 
         DataArray dataArray = new DataArray(coleccionInicio);

@@ -1,8 +1,16 @@
 package ppss;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import ppss.Exceptions.ButacasException;
+import org.junit.jupiter.params.ParameterizedTest;
+
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -85,5 +93,25 @@ public class CineTest {
                 assertEquals(resultadoEsperado, resultadoReal);
             }, () -> assertArrayEquals(asientosEsperados, asientosReales));
         });
+    }
+
+    @ParameterizedTest(name="[{index}] should be {2} when we want {1} and {4}")
+    @Tag("parametrizado")
+    @DisplayName("reservaButacas_")
+    @MethodSource("casosDePrueba")
+    public void reservaButacasC5(boolean[] asientosReales, int solicitados, boolean resultadoEsperado, boolean[] asientosEsperados, String texto) throws ButacasException {
+        boolean resultadoReal = cine.reservaButacas(asientosReales, solicitados);
+        assertAll(
+                () -> assertEquals(resultadoEsperado, resultadoReal),
+                () -> assertArrayEquals(asientosEsperados, asientosReales)
+        );
+    }
+
+    public static Stream<Arguments> casosDePrueba() {
+        return Stream.of(
+                Arguments.of(new boolean[]{}, 0, false, new boolean[]{}, "file has no seats"),
+                Arguments.of(new boolean[]{false, false, false, true, true}, 2, true, new boolean[]{true, true, false, true, true}, "there are two free seats"),
+                Arguments.of(new boolean[]{true, true, true}, 1, false, new boolean[]{true, true, true}, "all seats are already reserved")
+        );
     }
 }

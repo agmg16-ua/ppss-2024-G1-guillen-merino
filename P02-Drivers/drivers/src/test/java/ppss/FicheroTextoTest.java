@@ -12,14 +12,14 @@ class FicheroTextoTest {
     @BeforeEach
     public void setup() { ficheroTexto = new FicheroTexto(); };
     @Test
-    void C1_contarCaracteres_should_return_Exception_when_file_does_not_exist() {
+    public void C1_contarCaracteres_should_return_Exception_when_file_does_not_exist() {
         String fichero = "ficheroC1.txt";
 
         assertThrows(FicheroException.class, () -> ficheroTexto.contarCaracteres(fichero));
     }
 
     @Test
-    void C2_contarCaracteres_should_return_3_when_file_has_3_chars() {
+    public void C2_contarCaracteres_should_return_3_when_file_has_3_chars() {
         String fichero = "ficheroCorrecto.txt";
         int resultadoEsperado = 3;
 
@@ -32,13 +32,13 @@ class FicheroTextoTest {
 
     @Tag("excluido")
     @Test
-    void C3_contarCaracteres_should_return_Exception_when_file_cannot_be_read() {
+    public void C3_contarCaracteres_should_return_Exception_when_file_cannot_be_read() {
         Assertions.fail();
     }
 
     @Tag("excluido")
     @Test
-    void C4_contarCaracteres_should_return_Exception_when_file_cannot_be_closed() {
+    public void C4_contarCaracteres_should_return_Exception_when_file_cannot_be_closed() {
         Assertions.fail();
     }
 }
