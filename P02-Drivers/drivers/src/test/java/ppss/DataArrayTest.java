@@ -1,9 +1,17 @@
 package ppss;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import ppss.Exceptions.DataException;
+import org.junit.jupiter.params.ParameterizedTest;
+
+import java.util.stream.Stream;
 
 class DataArrayTest {
 
@@ -147,5 +155,51 @@ class DataArrayTest {
         DataException exception = assertThrows(DataException.class, () -> dataArray.delete(eliminar));
 
         assertEquals("Elemento no encontrado", exception.getMessage());
+    }
+
+    @ParameterizedTest(name="[{index}] Mesage exception should be \"{2}\" when we want delete {1}")
+    @Tag("parametrizado")
+    @Tag("conExcepciones")
+    @DisplayName("delete_with_exceptions_")
+    @MethodSource("casosDePruebaExcepciones")
+    public void C8_deleteWithExceptions(int[] coleccion, int eliminar, String mensaje) {
+        DataArray dataArray = new DataArray(coleccion);
+        DataException exception = assertThrows(DataException.class, () -> dataArray.delete(eliminar));
+        assertEquals(mensaje, exception.getMessage());
+    }
+
+    public static Stream<Arguments> casosDePruebaExcepciones() {
+        return Stream.of(
+                Arguments.of(new int[]{}, 8, "No hay elementos en la colección"),
+                Arguments.of(new int[]{1,3,5,7}, -5, "El valor a borrar debe ser > 0"),
+                Arguments.of(new int[]{}, 0, "Colección vacía. Y el valor a borrar debe ser > 0"),
+                Arguments.of(new int[]{1,3,5,7}, 8, "Elemento no encontrado")
+        );
+    }
+
+    @ParameterizedTest(name="[{index}] should be {2} when we want delete {1}")
+    @Tag("parametrizado")
+    @DisplayName("delete_without_exceptions")
+    @MethodSource("casosDePruebaSinExcepciones")
+    public void C9_deleteWithoutExceptions(int[] coleccionReal, int eliminar, int[] coleccionEsperada, int longitudEsperada) {
+        DataArray dataArray = new DataArray(coleccionReal);
+
+        assertDoesNotThrow(
+                () -> dataArray.delete(eliminar)
+        );
+
+        assertAll(
+                () -> assertArrayEquals(coleccionEsperada, dataArray.getColeccion()),
+                () -> assertEquals(longitudEsperada, dataArray.size())
+        );
+
+    }
+
+    public static Stream<Arguments> casosDePruebaSinExcepciones() {
+        return Stream.of(
+                Arguments.of(new int[]{1,3,5,7}, 5, new int[]{1,3,7}, 3),
+                Arguments.of(new int[]{1,3,3,5,7}, 3, new int[]{1,3,5,7}, 4),
+                Arguments.of(new int[]{1,2,3,4,5,6,7,8,9,10}, 4, new int[]{1,2,3,5,6,7,8,9,10}, 9)
+        );
     }
 }

@@ -16,7 +16,9 @@ public class FicheroTexto {
             int i=0;
             while (i != -1) {
                 i = fichero.read();
-                contador++;
+                if(i != -1) {
+                    contador++;
+                }
             }
         } catch (FileNotFoundException e1) {
             throw new FicheroException(nombreFichero + " (No existe el archivo o el directorio)");

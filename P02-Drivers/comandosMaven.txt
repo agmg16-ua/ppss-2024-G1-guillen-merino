@@ -8,13 +8,13 @@ RUN CONFIGURATIONS:
 	mvn clean test -Dtest=FicheroTextoTest -DexcludedGroups=excluido
 
 - Run DataArrayTest: 
-	mvn clean test -Dtest=DataArrayTest
+	mvn clean test -Dtest=DataArrayTest -DexcludedGroups=parametrizado
 
 - Run Parametrizados con excepciones: 
-	(pon aquí el comando)
+	mvn clean test -Dgroups=parametrizado&conExcepciones
 
 - Run Parametrizados: 
-	(pon aquí el comando)
+	mvn clean test -Dgroups=parametrizado
 
 - Run todos: 
-	(pon aquí el comando)
+	mvn clean test -DexcludedGroups=parametrizado,excluido
