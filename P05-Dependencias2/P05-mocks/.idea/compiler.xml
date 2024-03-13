@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="premio" />
         <module name="gestorLlamadasMocks" />
+        <module name="ficheroTexto" />
       </profile>
     </annotationProcessing>
   </component>

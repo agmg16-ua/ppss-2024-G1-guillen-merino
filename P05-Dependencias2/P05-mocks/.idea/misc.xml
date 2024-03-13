@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/gestorLlamadasMocks/pom.xml" />
         <option value="$PROJECT_DIR$/premio/pom.xml" />
+        <option value="$PROJECT_DIR$/ficheroTexto/pom.xml" />
       </list>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />
