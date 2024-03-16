@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import ppss.excepciones.*;
 public class Reserva {
 
+    public FactoriaBOs setFactoria() {
+        return new FactoriaBOs();
+    }
+
     public boolean compruebaPermisos(String login, String password, Usuario tipoUsu) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
@@ -14,7 +18,8 @@ public class Reserva {
         if(!compruebaPermisos(login, password, Usuario.BIBLIOTECARIO)) {
             errores.add("ERROR de permisos");
         } else {
-            FactoriaBOs fd = new FactoriaBOs();
+            //FactoriaBOs fd = new FactoriaBOs();
+            FactoriaBOs fd = setFactoria();
             IOperacionBO io = fd.getOperacionBO();
             try {
                 for(String isbn: isbns) {
