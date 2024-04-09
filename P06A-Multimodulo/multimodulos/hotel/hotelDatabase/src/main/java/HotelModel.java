@@ -1,0 +1,2 @@
+public class HotelModel {
+}
