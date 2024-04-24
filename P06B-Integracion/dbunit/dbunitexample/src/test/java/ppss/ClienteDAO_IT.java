@@ -10,15 +10,17 @@ import org.dbunit.util.fileloader.FlatXmlDataFileLoader;
 
 import org.junit.jupiter.api.*;
 
-/* IMPORTANTE:
-    Dado que prácticamente todos los métodos de dBUnit lanzan una excepción,
-    vamos a usar "throws Esception" en los métodos, para que el código quede más
-    legible sin necesidad de usar un try..catch o envolver cada sentencia dbUnit 
-    con un assertDoesNotThrow()
-    Es decir, que vamos a primar la legibilidad de los tests.
-    Si la SUT puede lanza una excepción, SIEMPRE usaremos assertDoesNotThrow para
-    invocar a la sut cuando no esperemos que se lance dicha excepción (independientemente de que hayamos propagado las excepciones provocadas por dbunit).
-*/
+import java.sql.SQLException;
+
+ /* IMPORTANTE:
+     Dado que prácticamente todos los métodos de dBUnit lanzan una excepción,
+     vamos a usar "throws Esception" en los métodos, para que el código quede más
+     legible sin necesidad de usar un try..catch o envolver cada sentencia dbUnit
+     con un assertDoesNotThrow()
+     Es decir, que vamos a primar la legibilidad de los tests.
+     Si la SUT puede lanza una excepción, SIEMPRE usaremos assertDoesNotThrow para
+     invocar a la sut cuando no esperemos que se lance dicha excepción (independientemente de que hayamos propagado las excepciones provocadas por dbunit).
+ */
 public class ClienteDAO_IT {
   
   private ClienteDAO clienteDAO; //SUT
@@ -85,6 +87,58 @@ public class ClienteDAO_IT {
     ITable expectedTable = expectedDataSet.getTable("cliente");
 
     Assertion.assertEquals(expectedTable, actualTable);
+  }
+
+  @Test
+  public void D3_insert_should_throw_exception_when_insert_cliente_that_already_exists() throws Exception {
+    Cliente cliente = new Cliente(2, "Pepe", "Garcia");
+    cliente.setDireccion("1 Develop Street");
+    cliente.setCiudad("Anycity");
+
+    //Inicializar BD
+    IDataSet dataSet = new FlatXmlDataFileLoader().load("/cliente-init-D3-D4.xml");
+    databaseTester.setDataSet(dataSet);
+    databaseTester.onSetup();
+
+    //Invocar la SUT
+    SQLException exception = Assertions.assertThrows(SQLException.class,
+            () -> clienteDAO.insert(cliente)
+    );
+
+    //Comprobar mensaje de error
+    Assertions.assertTrue(exception.getMessage().contains("Duplicate entry"));
+
+    /*
+    //Recuperar BD
+    IDataSet databaseDataSet = connection.createDataSet();
+    ITable actualTable = databaseDataSet.getTable("cliente");
+
+    //Dataset con datos esperados
+    IDataSet expectedDataSet = new FlatXmlDataFileLoader().load("/cliente-expected-D3-D4.xml");
+    ITable expectedTable = expectedDataSet.getTable("cliente");
+
+    Assertions.assertEquals(actualTable, expectedTable);
+    */
+  }
+
+  @Test
+  public void D4_delete_should_throw_exception_when_delete_cliente_that_do_not_exists() throws Exception {
+    Cliente cliente = new Cliente(3, "Alex", "Lopez");
+    cliente.setDireccion("5 Java Street");
+    cliente.setCiudad("TechCity");
+
+    //Inicializar BD
+    IDataSet dataSet = new FlatXmlDataFileLoader().load("/cliente-init-D3-D4.xml");
+    databaseTester.setDataSet(dataSet);
+    databaseTester.onSetup();
+
+    //Invocar la SUT
+    SQLException exception = Assertions.assertThrows(SQLException.class,
+            () -> clienteDAO.delete(cliente)
+    );
+
+    //Comprobar mensaje de error
+    Assertions.assertTrue(exception.getMessage().contains("Delete failed"));
   }
 
 }
