@@ -108,7 +108,7 @@ public class ClienteDAO_IT {
     //Comprobar mensaje de error
     Assertions.assertTrue(exception.getMessage().contains("Duplicate entry"));
 
-    /*
+
     //Recuperar BD
     IDataSet databaseDataSet = connection.createDataSet();
     ITable actualTable = databaseDataSet.getTable("cliente");
@@ -117,8 +117,8 @@ public class ClienteDAO_IT {
     IDataSet expectedDataSet = new FlatXmlDataFileLoader().load("/cliente-expected-D3-D4.xml");
     ITable expectedTable = expectedDataSet.getTable("cliente");
 
-    Assertions.assertEquals(actualTable, expectedTable);
-    */
+    Assertion.assertEquals(actualTable, expectedTable);
+
   }
 
   @Test
@@ -139,6 +139,64 @@ public class ClienteDAO_IT {
 
     //Comprobar mensaje de error
     Assertions.assertTrue(exception.getMessage().contains("Delete failed"));
+
+    //Recuperar BD
+    IDataSet databaseDataSet = connection.createDataSet();
+    ITable actualTable = databaseDataSet.getTable("cliente");
+
+    //Dataset con datos esperados
+    IDataSet expectedDataSet = new FlatXmlDataFileLoader().load("/cliente-expected-D3-D4.xml");
+    ITable expectedTable = expectedDataSet.getTable("cliente");
+
+    Assertion.assertEquals(actualTable, expectedTable);
+  }
+
+  @Test
+  public void D5_update_should_change_Johns_city_to_NewCity_when_exists_in_table() throws Exception {
+    Cliente cliente = new Cliente(1, "John", "Smith");
+    cliente.setDireccion("Other Street");
+    cliente.setCiudad("NewCity");
+
+
+    //Inicializar BD
+    IDataSet dataSet = new FlatXmlDataFileLoader().load("/cliente-init-D5-D6.xml");
+    databaseTester.setDataSet(dataSet);
+    databaseTester.onSetup();
+
+    //Llamar a la SUT
+    Assertions.assertDoesNotThrow(() -> clienteDAO.update(cliente));
+
+
+    //Recuperar la BD
+    IDataSet databaseDataSet = connection.createDataSet();
+    ITable actualTable = databaseDataSet.getTable("cliente");
+
+
+    //Cargar datos esperados
+    IDataSet expectedDataSet = new FlatXmlDataFileLoader().load("/cliente-expected-D5-D6.xml");
+    ITable expectedTable = expectedDataSet.getTable("cliente");
+
+    Assertion.assertEquals(expectedTable, actualTable);
+  }
+
+  @Test
+  public void D6_retrieve_should_retrn_all_data_from_clientes() throws Exception {
+    Cliente clienteEsperado = new Cliente(1, "John", "Smith");
+    clienteEsperado.setDireccion("1 Main Street");
+    clienteEsperado.setCiudad("Anycity");
+
+    int clienteId = 1;
+
+    //Inicializar BD
+    IDataSet dataSet = new FlatXmlDataFileLoader().load("/cliente-init-D5-D6.xml");
+    databaseTester.setDataSet(dataSet);
+    databaseTester.onSetup();
+
+    //Invocar a la SUT
+    Cliente clienteActual = Assertions.assertDoesNotThrow(() -> clienteDAO.retrieve(clienteId));
+
+    //Comprobar resultado
+    Assertions.assertTrue(clienteEsperado.equals(clienteActual));
   }
 
 }

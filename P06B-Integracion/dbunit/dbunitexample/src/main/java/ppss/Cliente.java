@@ -52,4 +52,20 @@ public class Cliente {
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this.getId() == ((Cliente)obj).getId() &&
+                this.getNombre().equals(((Cliente)obj).getNombre()) &&
+                this.getApellido().equals(((Cliente)obj).getApellido()) &&
+                this.getDireccion().equals(((Cliente)obj).getDireccion()) &&
+                this.getCiudad().equals(((Cliente)obj).getCiudad())){
+
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
 }
