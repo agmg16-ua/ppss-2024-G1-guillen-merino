@@ -21,7 +21,5 @@ public class AlumnoDAOTest {
     }
 
     @Test
-    public void T4() {
-        Assertions.assertTrue(true);
-    }
+    public void T4() { Assertions.assertTrue(true); }
 }
