@@ -1,23 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Ejercicio1.CreateAccount" type="MavenRunConfiguration" factoryName="Maven">
+  <configuration default="false" name="Ejercicio1.sinPO.TestLogin" type="MavenRunConfiguration" factoryName="Maven">
     <MavenSettings>
       <option name="myGeneralSettings" />
-      <option name="myRunnerSettings">
-        <MavenRunnerSettings>
-          <option name="delegateBuildToMaven" value="false" />
-          <option name="environmentProperties">
-            <map />
-          </option>
-          <option name="jreName" value="17" />
-          <option name="mavenProperties">
-            <map />
-          </option>
-          <option name="passParentEnv" value="true" />
-          <option name="runMavenInBackground" value="true" />
-          <option name="skipTests" value="false" />
-          <option name="vmOptions" value="" />
-        </MavenRunnerSettings>
-      </option>
+      <option name="myRunnerSettings" />
       <option name="myRunnerParameters">
         <MavenRunnerParameters>
           <option name="cmdOptions" />
@@ -28,7 +13,7 @@
             <list>
               <option value="clean" />
               <option value="test" />
-              <option value="-Dtest=TestCreateAccount" />
+              <option value="-Dtest=TestLogin" />
             </list>
           </option>
           <option name="multimoduleDir" />
