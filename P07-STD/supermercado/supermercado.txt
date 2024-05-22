@@ -1,0 +1,125 @@
+DOCUMENTACIÓN DEL DIAGRAMA DE TRANSICIÓN DE ESTADOS EJERCICIO 1 (SUPERMERCADO)
+
+
+ENTIDAD A MODELAR:
+
+- Terminal de ventas de un supermercado
+
+ESTAODS
+
+- NombreEstadoEnDiagrama = Descripción del estado 1
+
+- NombreEstadoEnDiagrama = Descripción del estado 2
+
+- Añade tantos ítems como necesites. 
+
+- Autenticando = Estado en el que se encuentra al iniciarse el terminal y aún no se ha introducido un código correcto.
+
+- Esperando = Estado en el que se encuentra el terminal despues de autenticarse y espera a que llegue algún cliente.
+
+- Comprando = Estado en el que se encuentra el terminal mientras se pasan productos por el lector de códigos.
+
+- Pagando = Estado en el que se encuentra el terminal al terminar de pasar productos y se procede a realizar el pago con la tarjeta.
+
+
+EVENTOS
+
+- NombreEventoEnDiagrama = Descripción del evento 1
+
+- NombreEventoEnDiagrama = Descripción del evento 2
+
+- Añade tantos ítems como necesites. 
+
+- verificar() = recibe el código de autenticación y comprueba si es valido.
+
+- fin_turno() = comprueba si ha llegado el final del turno.
+
+- escanear() = realiza la accion de escanear un producto y comprueba que la lectura sea correcta.
+
+- pagar() = finaliza el estado de comprando y cambia el sistema al estado de pagando
+
+- pago() = recibe los datos de la tarjeta, comprueba que sean validos y realiza el pago de la compra.
+
+- cancelar() = cancela la compra
+
+
+GUARDAS
+
+- NombreGuardaEnDiagrama = Descripción de la guarda 1
+
+- NombreGuardaEnDiagrama = Descripción de la guarda 2
+
+- Añade tantos ítems como necesites. 
+
+- [cod_ok == false/true] = establece si el codigo de autenticacion ha sido correcto o no.
+
+- [trabajando == false] = establece el final de turno y por tanto la salida del sistema.
+
+- [escaneado == true/false] = establece si el producto escaneado se ha leido y se ha añadido correctamente o no.
+
+- [cobro == true/false] = establece si se ha podido realizar el pago correctamente o no
+
+- [cancelar == true] = indica que se ha cancelado la compra.
+
+
+ACCIONES
+
+- Nombre AccionEnDiagrama = Descripción de la acción 1
+
+- Nombre AccionEnDiagrama = Descripción de la acción 1
+
+- Añade tantos ítems como necesites. 
+
+- "Error acceso" = mensaje de error cuando el codigo de autenticacion es incorrecto
+
+- "Caja abierta" = mensaje de error cuando el codigo de autenticacion es correcto
+
+- Subtotal = muestra el subtotal de la compra en la pantalla.
+
+- "Vuelve a pasar el producto" = muestra por pantalla que el producto no se ha leido correctamente y se debe volver a pasar.
+
+- "Error de pago" = muestra el mensaje de pago erroneo
+
+- Ticket = imprime el ticket con todos los datos
+
+- "Compra cancelada" = muestra que la compra se ha cancelado y a continuacion la pantalla principal
+
+
+ATRIBUTOS (asociados a eventos y/o acciones)
+
+- Nombre AtributoEnDiagrama = Descripción del atributo 1
+
+- Nombre AtributoEnDiagrama = Descripción del atributo 2
+
+- Añade tantos ítems como necesites. 
+
+- codigo = codigo de autenticacion del usuario
+
+- producto = codigo del producto que se escanea
+
+- compra = referencias de todos los articulos, cantidades, precios por producto y subtotal
+
+- tarjeta = datos de la tarjeta para realizar el pago
+
+
+-----------------------------------------------------------
+DISEÑO DE CASOS DE PRUEBA
+
+
+CAMINOS A PROBAR
+
+C1: E1-E2-E3-E4
+C2: E5-E6-E7-E8
+C3: E9-E10-E11-E12
+C4: Añade todos los caminos que necesites
+
+C1: 
+
+
+CASOS DE PRUEBA
+
+C1: acciones1 - verificaciónCorrespondiente
+    acciones2 - verificaciónCorrespondiente
+    AÑADE TODOAS LAS ACCIONES Y VERIFICACIONES QUE NECESITES PARA CADA CX
+
+

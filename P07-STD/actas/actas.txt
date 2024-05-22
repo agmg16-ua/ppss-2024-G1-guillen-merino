@@ -1,0 +1,70 @@
+DOCUMENTACIÓN DEL DIAGRAMA DE TRANSICIÓN DE ESTADOS EJERCICIO 2 (ACTAS)
+
+
+ENTIDAD A MODELAR:
+
+- Gestión de actas de una asignatura
+
+ESTAODS
+
+- NombreEstadoEnDiagrama = Descripción del estado 1
+
+- NombreEstadoEnDiagrama = Descripción del estado 2
+
+- Añade tantos ítems como necesites. 
+
+
+EVENTOS
+
+- NombreEventoEnDiagrama = Descripción del evento 1
+
+- NombreEventoEnDiagrama = Descripción del evento 2
+
+- Añade tantos ítems como necesites. 
+
+
+GUARDAS
+
+- NombreGuardaEnDiagrama = Descripción de la guarda 1
+
+- NombreGuardaEnDiagrama = Descripción de la guarda 2
+
+- Añade tantos ítems como necesites. 
+
+
+ACCIONES
+
+- Nombre AccionEnDiagrama = Descripción de la acción 1
+
+- Nombre AccionEnDiagrama = Descripción de la acción 1
+
+- Añade tantos ítems como necesites. 
+
+
+ATRIBUTOS (asociados a eventos y/o acciones)
+
+- Nombre AtributoEnDiagrama = Descripción del atributo 1
+
+- Nombre AtributoEnDiagrama = Descripción del atributo 2
+
+- Añade tantos ítems como necesites. 
+
+
+-----------------------------------------------------------
+DISEÑO DE CASOS DE PRUEBA
+
+
+CAMINOS A PROBAR
+
+C1: E1-E2-E3-E4
+C2: E5-E6-E7-E8
+C3: E9-E10-E11-E12
+C4: Añade todos los caminos que necesites
+
+
+CASOS DE PRUEBA
+
+C1: acciones1 - verificaciónCorrespondiente
+    acciones2 - verificaciónCorrespondiente
+    AÑADE TODOAS LAS ACCIONES Y VERIFICACIONES QUE NECESITES PARA CADA CX
+
