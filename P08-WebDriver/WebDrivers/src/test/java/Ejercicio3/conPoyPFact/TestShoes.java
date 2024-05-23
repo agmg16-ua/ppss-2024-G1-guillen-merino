@@ -1,6 +1,7 @@
 package Ejercicio3.conPoyPFact;
 
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -68,5 +69,16 @@ public class TestShoes {
 
         //Verificar que vuelvo a la pagina
         Assertions.assertTrue(poShoesPage.getPageTitle().contains("Shoes - Accessories"));
+
+        //Eliminar objetos de la lista y eliminacion
+        Alert alerta = poShoesPage.clearComparisonObjects();
+
+        //Comprobar mensaje de alerta y aceptar alerta
+        Assertions.assertTrue(alerta.getText().contains("Are you sure you would like to remove all products from your comparison?"));
+        alerta.accept();
+
+        //Comprobar que existe el mensaje de borrado
+        Assertions.assertTrue(poShoesPage.getMensaje().contains("The comparison list was cleared."));
+
     }
 }
