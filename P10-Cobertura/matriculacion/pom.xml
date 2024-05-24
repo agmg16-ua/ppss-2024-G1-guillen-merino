@@ -118,16 +118,16 @@
 
           <!-- REPORTE INTEGRACION (EL PRINCIPAL + LOS MODULOS QUE TRABAJAN CON ESTE)-->
           <execution>
-            <id>default-report-integration</id>
+            <id>default-prepare-agent__</id>
             <goals>
-              <goal>report-integration</goal>
+              <goal>prepare-agent-integration</goal>
             </goals>
           </execution>
 
           <execution>
-            <id>default-prepare-agent__</id>
+            <id>default-report-integration</id>
             <goals>
-              <goal>prepare-agent-integration</goal>
+              <goal>report-integration</goal>
             </goals>
           </execution>
           <!-- -->
@@ -142,7 +142,7 @@
           </execution>
           <!-- -->
 
-          <!-- se pueden añadir checks por buena práctica-->
+          
           <execution>
             <id>default-check</id>
             <goals>
